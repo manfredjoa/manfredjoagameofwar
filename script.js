@@ -1,5 +1,4 @@
 // To do
-// Splice deck and push between the two players evenly.
 // Create function that plays the game
 // Create a pile array within this function from which cards played will be pushed into.
 
@@ -15,8 +14,7 @@ class Card {
 
 //
 class Deck {
-  constructor(length = 52) {
-    this.length = length
+  constructor() {
     this.cards = []
     this.fillDeck()
     this.shuffleDeck()
@@ -36,8 +34,8 @@ class Deck {
 
   shuffleDeck() {
     let j = 0
-    for (let i = 0; i < this.length; i++) {
-      j = Math.floor(Math.random() * this.length);
+    for (let i = 0; i < this.cards.length; i++) {
+      j = Math.floor(Math.random() * this.cards.length);
       [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]
     }
     // console.log(this.cards)
@@ -58,4 +56,14 @@ class Player {
 const theDeck = new Deck()
 const playerOne = new Player('Player 1')
 const playerTwo = new Player('Player 2')
+
+const splitDeck = () => {
+  playerOne.cards.push(theDeck.cards.splice(0, 26))
+  playerTwo.cards.push(theDeck.cards.splice(0, 26))
+}
+
+splitDeck()
+
+console.log(playerOne)
+console.log(playerTwo)
 //
