@@ -23,7 +23,6 @@ class Deck {
     for (let i = 0; i < suits.length; i++) {
 
       for (let j = 0; j < ranks.length; j++) {
-        // this.cards.push(new Card(suits[i], ranks[j], j + 2))
         this.cards.push(new Card(suits[i], ranks[j], j + 2))
       }
     }
@@ -35,7 +34,6 @@ class Deck {
       j = Math.floor(Math.random() * this.cards.length);
       [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]
     }
-    // console.log(this.cards)
   }
 }
 //
@@ -78,8 +76,8 @@ let gameOfWar = () => {
 
       playerOne.cards[0].push(playerOneCard[0])
       playerOne.cards[0].push(playerTwoCard[0])
-      // playerOneCard = []
-      // playerTwoCard = []
+      playerOneCard = []
+      playerTwoCard = []
 
       console.log(`${playerOne.name}: ${playerOne.cards[0].length} cards`)
       console.log(`${playerTwo.name}: ${playerTwo.cards[0].length} cards`)
@@ -89,13 +87,13 @@ let gameOfWar = () => {
 
       playerTwo.cards[0].push(playerOneCard[0])
       playerTwo.cards[0].push(playerTwoCard[0])
-      // playerOneCard = []
-      // playerTwoCard = []
+      playerOneCard = []
+      playerTwoCard = []
 
       console.log(`${playerOne.name}: ${playerOne.cards[0].length} cards`)
       console.log(`${playerTwo.name}: ${playerTwo.cards[0].length} cards`)
 
-    } else while (playerOneCard[0].score === playerTwoCard[0].score) {
+    } else while (playerOneCard !== [] && playerOneCard[0].score === playerTwoCard[0].score) {
       if (playerOne.cards[0].length < 4) {
         console.log(`${playerOne.name} does not have enough cards to go to War. ${playerTwo.name} wins the game!`)
 
@@ -126,8 +124,8 @@ let gameOfWar = () => {
         playerOne.cards[0].push(playerTwoCard[0])
         playerOne.cards[0].push(...tiedPile)
 
-        // playerOneCard = []
-        // playerTwoCard = []
+        playerOneCard = []
+        playerTwoCard = []
         tiedPile = []
 
         console.log(`${playerOne.name}: ${playerOne.cards[0].length} cards`)
@@ -140,8 +138,8 @@ let gameOfWar = () => {
         playerTwo.cards[0].push(playerTwoCard[0])
         playerTwo.cards[0].push(...tiedPile)
 
-        // playerOneCard = []
-        // playerTwoCard = []
+        playerOneCard = []
+        playerTwoCard = []
         tiedPile = []
 
         console.log(`${playerOne.name}: ${playerOne.cards[0].length} cards`)
@@ -157,3 +155,9 @@ let gameOfWar = () => {
 }
 
 console.log(gameOfWar())
+
+// Commented out playerOneCard = [] & playerTwoCard = [] to fix error with looping within the inner loop, but now those arrays are not being emptied and those same cards that were played for the war are being played again immediately after.
+
+// Code runs again after a player does not have enough cards to go to war and a winner is determined. 
+
+// Issue is probably the else while loop conditional! The reason the outer loop is working without issues regarding the playerOneCard & playerTwoCard being empty arrays is because the conditional only refers to the number of cards the players have and nothing to do with the score. How do I change the conditional in a way where having empty arrays won't loop within itself again? Add a condition where it won't run if the array is empty?
