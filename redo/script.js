@@ -137,4 +137,4 @@ let gameOfWar = () => {
     console.log(`${playerTwo.name} has ${playerTwoDeck.length} cards left. ${playerOne.name} wins the game!`)
   }
 }
-// gameOfWar()
+gameOfWar()
