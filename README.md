@@ -1,11 +1,12 @@
 # Game of War
 
 **Welcome to my Game of War repository!**
+___
 
 <img width="720" alt="Screenshot 2023-07-13 at 11 27 39 PM" src="https://github.com/manfredjoa/manfredjoagameofwar/assets/135570772/024ae19e-177f-4f0d-b74f-62245a7b6e58">
 
 
-
+___
 ### How to Play
 To play this game, simply copy the index.html and script.js files in the redo folder and create your own directory with these files saved. You can forego having the index.html if you would like to play this game in your terminal, by running the node script.js command. Otherwise, this can be played in your browser by running the live-server . command in your terminal and opening your console through the developer tools. If played on a browser, simply refresh to reload a new instance of the game.
 ___
